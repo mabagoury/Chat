@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" method="post" th:action="@{/chat}" th:object="${chatForm}">
+    <label for="username">Username:</label>
+    <input th:field="*{username}" id="username" type="text">
+    <label for="messageText">Message Text:</label>
+    <input th:field="*{messageText}" id="messageText" type="text">
+    <label for="messageType">Message Type: </label>
+    <select th:field="*{messageType}" id="messageType">
+        <option th:value="'Say'" selected>Say</option>
+        <option th:value="'Shout'">Shout</option>
+        <option th:value="'Whisper'">Whisper</option>
+    </select>
+    <input type="submit">
+</form>
+<h1 th:each="msg: ${messages}" th:unless="msg.contains('insult')" th:text=${msg.user + ': ' + msg.text}>Hi</h1>
+</body>
+</html>
